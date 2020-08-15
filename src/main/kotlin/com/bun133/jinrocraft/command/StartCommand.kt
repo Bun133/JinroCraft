@@ -19,7 +19,6 @@ class StartCommand : BaseCommand() {
             setUpGame()
         }else{
             player.sendMessage("このコマンドはオペレーターのみが使用できます")
-            return true
         }
         return true
     }
