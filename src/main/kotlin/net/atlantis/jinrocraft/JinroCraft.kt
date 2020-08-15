@@ -1,5 +1,6 @@
 package net.atlantis.jinrocraft
 
+import com.bun133.jinrocraft.command.StartCommand
 import net.atlantis.jinrocraft.command.RoleCommand
 import net.atlantis.jinrocraft.command.StatusCommand
 import net.atlantis.jinrocraft.ext.initCommand
@@ -21,6 +22,10 @@ class JinroCraft : JavaPlugin() {
 
         initCommand("status", StatusCommand())
         initCommand("role", RoleCommand())
+
+        // Modded by Bun133
+        initCommand("start",StartCommand())
+        // ModEnd
 
         scheduleAsyncRunnable(PassiveRunnable(), 20, 500)
     }
