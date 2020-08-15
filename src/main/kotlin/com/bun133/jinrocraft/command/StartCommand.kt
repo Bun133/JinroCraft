@@ -15,6 +15,7 @@ import org.bukkit.entity.Player
 class StartCommand : BaseCommand() {
     override fun onCommandByPlayer(player: Player, command: Command, label: String, args: CommandArgs): Boolean {
         if (player.isOp){
+            if(args[0]=="vote") return VoteStartCommand().onCommandByPlayer(player, command, label, args)
             announce("ゲームが開始されました")
             setUpGame()
         }else{
