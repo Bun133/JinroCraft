@@ -1,17 +1,14 @@
 package com.bun133.jinrocraft.util
 
 import net.atlantis.jinrocraft.ext.getStringMetadata
-import net.atlantis.jinrocraft.ext.setStringListMetadata
 import net.atlantis.jinrocraft.ext.setStringMetadata
 import net.atlantis.jinrocraft.metadata.MetadataKey
-import net.atlantis.jinrocraft.model.RoleService
 import org.bukkit.Bukkit
 import org.bukkit.configuration.file.FileConfiguration
 import org.bukkit.entity.Player
 import org.bukkit.plugin.java.JavaPlugin
 import org.koin.core.KoinComponent
 import org.koin.core.inject
-import java.util.*
 
 class VoteService : KoinComponent {
     companion object{
@@ -19,14 +16,12 @@ class VoteService : KoinComponent {
     }
 
     private val plugin: JavaPlugin by inject()
+    private var isOpen:Boolean=true;
 
     fun reset() {
         val config: FileConfiguration = plugin.config
         config.set(CONFIG_VOTE_KEY, null)
-    }
-
-    fun resetPlayer(p:Player){
-        setVote(p,"")
+        isOpen=true;
     }
 
     fun setVote(from:Player,to:Player){
@@ -34,6 +29,10 @@ class VoteService : KoinComponent {
     }
 
     fun setVote(from:Player,to:String){
+        if(!isOpen){
+            from.sendMessage("投票はすでに締め切られています！")
+            return
+        }
         plugin.config.set(getConfigID(from),to)
         from.setStringMetadata(plugin,MetadataKey.VOTE.key,to)
         plugin.saveConfig()
@@ -55,4 +54,26 @@ class VoteService : KoinComponent {
     }
 
     private fun getConfigID(p:Player):String = "$CONFIG_VOTE_KEY.${p.uniqueId}"
+
+    fun stopVote():VoteService {
+        isOpen=false
+        return this@VoteService
+    }
+    fun getVoteResult(): Pair<Player, Int>? {
+        return getVoteResult(1)?.get(0)
+    }
+
+    fun getVoteResult(i: Int): List<Pair<Player,Int>>? {
+        if(isOpen) return null
+        val voteList = getAllPlayers().stream()
+                .map{ getVotePlayer(it) }
+        val voteMap:MutableMap<Player,Int> = mutableMapOf()
+        voteList.filter { it!=null }
+                .forEach {
+                    if(voteMap[it!!]==null)voteMap[it]=0
+                    voteMap[it]= voteMap[it]!! +1
+                }
+        val sortedList = voteMap.toSortedMap(compareBy{voteMap[it]}).toList()
+        return sortedList.subList(0,i)
+    }
 }

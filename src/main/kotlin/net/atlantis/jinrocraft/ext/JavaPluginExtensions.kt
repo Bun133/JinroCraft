@@ -20,3 +20,11 @@ fun JavaPlugin.scheduleRunnable(runnable: BukkitRunnable, delay: Long, period: L
 fun JavaPlugin.scheduleAsyncRunnable(runnable: BukkitRunnable, delay: Long, period: Long) {
     runnable.runTaskTimerAsynchronously(this, delay, period)
 }
+
+fun JavaPlugin.scheduleRunnable(runnable: BukkitRunnable,delay: Long){
+    runnable.runTaskLater(this,delay)
+}
+
+fun JavaPlugin.scheduleAsyncRunnable(runnable: BukkitRunnable, delay: Long) {
+    runnable.runTaskLaterAsynchronously(this, delay)
+}
