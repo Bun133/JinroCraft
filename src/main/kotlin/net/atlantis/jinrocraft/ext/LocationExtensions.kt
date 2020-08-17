@@ -4,7 +4,7 @@ import org.bukkit.Location
 import org.bukkit.Particle
 import org.bukkit.Sound
 import org.bukkit.entity.Entity
-import java.util.*
+import java.util.Random
 
 inline fun <reified T : Entity> Location.spawn(noinline function: (entity: T) -> Unit): T? = world?.spawn<T>(this, T::class.java, function)
 

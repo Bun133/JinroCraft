@@ -4,8 +4,6 @@ import net.atlantis.jinrocraft.util.VoteService
 import net.atlantis.jinrocraft.util.announceNote
 import net.atlantis.jinrocraft.util.announceTitle
 import net.atlantis.jinrocraft.util.setTimer
-import net.atlantis.jinrocraft.command.BaseCommand
-import net.atlantis.jinrocraft.command.CommandArgs
 import net.md_5.bungee.api.chat.ComponentBuilder
 import org.bukkit.Instrument
 import org.bukkit.Note

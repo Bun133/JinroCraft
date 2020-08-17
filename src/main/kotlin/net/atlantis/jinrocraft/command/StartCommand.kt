@@ -2,8 +2,6 @@ package net.atlantis.jinrocraft.command
 
 import net.atlantis.jinrocraft.util.announce
 import net.atlantis.jinrocraft.util.getAllPlayers
-import net.atlantis.jinrocraft.command.BaseCommand
-import net.atlantis.jinrocraft.command.CommandArgs
 import net.atlantis.jinrocraft.model.RoleService
 import net.atlantis.jinrocraft.model.getRandomRole
 import org.bukkit.GameMode

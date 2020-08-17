@@ -1,8 +1,6 @@
 package net.atlantis.jinrocraft.command
 
 import net.atlantis.jinrocraft.util.VoteService
-import net.atlantis.jinrocraft.command.BaseCommand
-import net.atlantis.jinrocraft.command.CommandArgs
 import net.md_5.bungee.api.ChatColor
 import org.bukkit.Bukkit
 import org.bukkit.command.Command
