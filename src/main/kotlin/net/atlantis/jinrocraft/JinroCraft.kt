@@ -1,7 +1,7 @@
 package net.atlantis.jinrocraft
 
-import com.bun133.jinrocraft.command.StartCommand
-import com.bun133.jinrocraft.command.VoteCommand
+import net.atlantis.jinrocraft.command.StartCommand
+import net.atlantis.jinrocraft.command.VoteCommand
 import net.atlantis.jinrocraft.command.RoleCommand
 import net.atlantis.jinrocraft.command.StatusCommand
 import net.atlantis.jinrocraft.ext.initCommand
@@ -25,8 +25,8 @@ class JinroCraft : JavaPlugin() {
         initCommand("role", RoleCommand())
 
         // Modded by Bun133
-        initCommand("start",StartCommand())
-        initCommand("vote",VoteCommand())
+        initCommand("start", StartCommand())
+        initCommand("vote", VoteCommand())
         // ModEnd
 
         scheduleAsyncRunnable(PassiveRunnable(), 20, 500)

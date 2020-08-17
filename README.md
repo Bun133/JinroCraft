@@ -1,4 +1,5 @@
-~~我らがリアドさんのメモですこれ~~
+[Trelloボード](https://trello.com/b/pU3ogVEu/jinrocraft)
+~~我らがリアドさんのメモ~~
 
 ・人狼ゲーム
 村人陣営：人狼、妖狐をすべて倒す
